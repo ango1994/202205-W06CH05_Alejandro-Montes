@@ -1,6 +1,11 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { iProduct } from '../../store/product';
-import { addProduct, deleteProduct, loadProduct } from './action-creator';
+import {
+    addProduct,
+    deleteProduct,
+    loadProduct,
+    updateProduct,
+} from './action-creator';
 import { productsReducer } from './product-reducer';
 
 const mockedArray: Array<iProduct> = [
@@ -34,6 +39,16 @@ describe('Given product reducer', () => {
                 deleteProduct(mockedArray[0])
             );
             expect(newState).toEqual([]);
+        });
+    });
+    describe('When calling it with update action', () => {
+        test('It should return a new state with the updated product', () => {
+            const newPrice = 10;
+            const newState = productsReducer(
+                mockedArray,
+                updateProduct({ ...mockedArray[0], price: newPrice })
+            );
+            expect(newState[0].price).toEqual(newPrice);
         });
     });
 });
