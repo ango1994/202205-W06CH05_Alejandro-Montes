@@ -5,7 +5,5 @@ import { loadProduct } from './action-creator';
 const initialState: Array<iProduct> = [];
 
 export const productsReducer = createReducer(initialState, (builder) => {
-    return builder.addCase(loadProduct, (state, action) => {
-        [...action.payload];
-    });
+    return builder.addCase(loadProduct, (state, action) => [...action.payload]);
 });
