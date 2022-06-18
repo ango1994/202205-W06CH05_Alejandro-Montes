@@ -18,6 +18,15 @@ const mockedArray: Array<iProduct> = [
         price: 30,
         stock: 10,
     },
+    {
+        categoty: 'Milk',
+        description: '',
+        id: 1,
+        name: '',
+        offer: true,
+        price: 30,
+        stock: 10,
+    },
 ];
 describe('Given product reducer', () => {
     describe('When calling it with load action with an array of products', () => {
@@ -29,7 +38,7 @@ describe('Given product reducer', () => {
     describe('When calling it with add action with a product', () => {
         test('It should return a new state with the product added to the array', () => {
             const newState = productsReducer([], addProduct(mockedArray[0]));
-            expect(newState).toEqual(mockedArray);
+            expect(newState).toEqual([mockedArray[0]]);
         });
     });
     describe('When calling it with delete action', () => {
@@ -38,7 +47,7 @@ describe('Given product reducer', () => {
                 mockedArray,
                 deleteProduct(mockedArray[0])
             );
-            expect(newState).toEqual([]);
+            expect(newState).toEqual([mockedArray[1]]);
         });
     });
     describe('When calling it with update action', () => {
