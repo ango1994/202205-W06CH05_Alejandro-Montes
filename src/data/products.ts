@@ -10,6 +10,7 @@ export async function getProducts() {
             offer: false,
             price: 2,
             stock: 10,
+            img: 'img/288585-CHIPS-AHOY-128-GRS.jpg',
         },
         {
             categoty: 'Milk',
@@ -19,6 +20,7 @@ export async function getProducts() {
             offer: false,
             price: 1,
             stock: 100,
+            img: 'img/puleva_max_relacionado.png',
         },
     ];
 
