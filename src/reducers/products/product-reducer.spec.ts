@@ -1,5 +1,5 @@
 import { AnyAction } from '@reduxjs/toolkit';
-import { iProduct } from '../../store/product';
+import { iProduct } from '../../models/product';
 import {
     addProduct,
     deleteProduct,
