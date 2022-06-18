@@ -1,12 +1,12 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { iProduct } from '../../models/product';
 import {
-    addProduct,
-    deleteProduct,
-    loadProduct,
-    updateProduct,
+    addMyProduct,
+    deleteMyProduct,
+    loadMyProduct,
+    updateMyProduct,
 } from './action-creator';
-import { productsReducer } from './product-reducer';
+import { myProductsReducer } from './my-product-reducer';
 
 const mockedArray: Array<iProduct> = [
     {
@@ -31,21 +31,24 @@ const mockedArray: Array<iProduct> = [
 describe('Given product reducer', () => {
     describe('When calling it with load action with an array of products', () => {
         test('It should return a new state with that array of characters', () => {
-            const newState = productsReducer([], loadProduct(mockedArray));
+            const newState = myProductsReducer([], loadMyProduct(mockedArray));
             expect(newState).toEqual(mockedArray);
         });
     });
     describe('When calling it with add action with a product', () => {
         test('It should return a new state with the product added to the array', () => {
-            const newState = productsReducer([], addProduct(mockedArray[0]));
+            const newState = myProductsReducer(
+                [],
+                addMyProduct(mockedArray[0])
+            );
             expect(newState).toEqual([mockedArray[0]]);
         });
     });
     describe('When calling it with delete action', () => {
         test('It should return a new state with the product removed from the array', () => {
-            const newState = productsReducer(
+            const newState = myProductsReducer(
                 mockedArray,
-                deleteProduct(mockedArray[0])
+                deleteMyProduct(mockedArray[0])
             );
             expect(newState).toEqual([mockedArray[1]]);
         });
@@ -53,9 +56,9 @@ describe('Given product reducer', () => {
     describe('When calling it with update action', () => {
         test('It should return a new state with the updated product', () => {
             const newPrice = 10;
-            const newState = productsReducer(
+            const newState = myProductsReducer(
                 mockedArray,
-                updateProduct({ ...mockedArray[0], price: newPrice })
+                updateMyProduct({ ...mockedArray[0], price: newPrice })
             );
             expect(newState[0].price).toEqual(newPrice);
         });

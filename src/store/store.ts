@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { iProduct } from '../models/product';
-import { productsReducer } from '../reducers/products/product-reducer';
+import { myProductsReducer } from '../reducers/my-products/my-product-reducer';
 
 const preloadedState = {
     cart: [] as Array<iProduct>,
@@ -8,7 +8,7 @@ const preloadedState = {
 
 export const store = configureStore({
     reducer: {
-        cart: productsReducer,
+        cart: myProductsReducer,
     },
     preloadedState,
 });

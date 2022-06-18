@@ -1,23 +1,23 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { iProduct } from '../../models/product';
 import {
-    addProduct,
-    deleteProduct,
-    loadProduct,
-    updateProduct,
+    addMyProduct,
+    deleteMyProduct,
+    loadMyProduct,
+    updateMyProduct,
 } from './action-creator';
 
 const initialState: Array<iProduct> = [];
-export const productsReducer = createReducer(initialState, (builder) => {
+export const myProductsReducer = createReducer(initialState, (builder) => {
     return builder
-        .addCase(loadProduct, (state, action) => [...action.payload])
-        .addCase(addProduct, (state, action) => [...state, action.payload])
-        .addCase(updateProduct, (state, action) =>
+        .addCase(loadMyProduct, (state, action) => [...action.payload])
+        .addCase(addMyProduct, (state, action) => [...state, action.payload])
+        .addCase(updateMyProduct, (state, action) =>
             state.map((product) =>
                 product.id === action.payload.id ? action.payload : product
             )
         )
-        .addCase(deleteProduct, (state, action) =>
+        .addCase(deleteMyProduct, (state, action) =>
             state.filter((product) => product.id !== action.payload.id)
         );
 });
