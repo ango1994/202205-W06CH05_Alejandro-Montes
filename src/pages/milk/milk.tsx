@@ -1,3 +1,26 @@
+import { useSelector } from 'react-redux';
+import { CardProduct } from '../../components/card-product/card-product';
+import { iState } from '../../models/state';
+
 export function MilkProducts() {
-    return <h1>Milks</h1>;
+    const products = useSelector((state: iState) => state.products);
+    // const milkProducts = products.filter((product) => (
+    //      product.categoty === 'Milk'
+    // ))
+    return (
+        <div>
+            <h2>Milks</h2>
+            {
+                <ul>
+                    {products.map((product) =>
+                        product.categoty === 'Milk' ? (
+                            <CardProduct product={product} key={product.id} />
+                        ) : (
+                            ''
+                        )
+                    )}
+                </ul>
+            }
+        </div>
+    );
 }

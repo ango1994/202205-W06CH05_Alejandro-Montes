@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, Route, Routes } from 'react-router-dom';
+import { getProducts } from '../../data/products';
 import { CookieProducts } from '../../pages/cookie/cookie';
 import { Home } from '../../pages/home/home';
 import { MilkProducts } from '../../pages/milk/milk';
+import { loadProduct } from '../../reducers/products/action-creator';
 import './App.css';
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        getProducts().then((products) => {
+            dispatch(loadProduct(products));
+        });
+    }, [dispatch]);
     return (
         <div className="App">
             <h1>Milk and cookies</h1>

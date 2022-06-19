@@ -49,5 +49,10 @@
     },
     "prettier": {
         "singleQuote": true
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/src/store"
+        ]
     }
 }
