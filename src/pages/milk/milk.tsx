@@ -4,9 +4,7 @@ import { iState } from '../../models/state';
 
 export function MilkProducts() {
     const products = useSelector((state: iState) => state.products);
-    // const milkProducts = products.filter((product) => (
-    //      product.categoty === 'Milk'
-    // ))
+
     return (
         <div>
             <h2>Milks</h2>
