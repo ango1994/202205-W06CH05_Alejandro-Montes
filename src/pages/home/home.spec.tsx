@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Home } from './home';
-import { render, screen } from '../../services/test-utils';
+import { render, screen } from '../../utils/test-utils';
 import { iProduct } from '../../models/product';
 
 jest.mock('react-redux', () => ({
