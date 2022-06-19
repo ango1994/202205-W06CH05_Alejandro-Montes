@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Home } from './home';
 import { render, screen } from '../../utils/test-utils';
 import { iProduct } from '../../models/product';
+import { BrowserRouter } from 'react-router-dom';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -35,7 +36,11 @@ describe('Given the Home component', () => {
             (useSelector as jest.Mock).mockImplementation(() => mockedArray);
         });
         test('It should render the redux store data', () => {
-            render(<Home />);
+            render(
+                <BrowserRouter>
+                    <Home />
+                </BrowserRouter>
+            );
             const testElement = screen.getByText(/Pepe/i);
             expect(testElement).toBeInTheDocument();
         });

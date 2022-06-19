@@ -13,5 +13,9 @@ export function Details() {
             </div>
         );
     }
-    return <div></div>;
+    return (
+        <div>
+            <p>Not found</p>
+        </div>
+    );
 }

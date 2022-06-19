@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { render, screen } from '../../utils/test-utils';
 import { iProduct } from '../../models/product';
 import { CookieProducts } from './cookie';
+import { BrowserRouter } from 'react-router-dom';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -29,13 +30,17 @@ const mockedArray: Array<iProduct> = [
     },
 ];
 
-describe('Given the Home component', () => {
+describe('Given the Cookie component', () => {
     describe('When calling it', () => {
         beforeEach(() => {
             (useSelector as jest.Mock).mockImplementation(() => mockedArray);
         });
         test('It should render the redux store data', () => {
-            render(<CookieProducts />);
+            render(
+                <BrowserRouter>
+                    <CookieProducts />
+                </BrowserRouter>
+            );
             const testElement1 = screen.getByText(/chips/i);
             const testElement2 = screen.queryByText('puleva');
             expect(testElement1).toBeInTheDocument();
